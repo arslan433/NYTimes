@@ -56,27 +56,30 @@ export default function Navbar() {
         </button>
       </div>
 
-      {open && (
-        <div className="md:hidden bg-black/90 px-4 py-3 space-y-3">
-          {links.map((link) => {
-            const isActive =
-              pathname === link.href || pathname.startsWith(link.href);
+  {open && (
+  <div className="md:hidden bg-black/90 px-4 py-3 space-y-3">
+    {links.map((link) => {
+      // ✅ Home ke liye exact match, baaki ke liye startsWith
+      const isActive =
+        link.href === "/"
+          ? pathname === "/"
+          : pathname.startsWith(link.href);
 
-            return (
-              <Link
-                key={link.href}
-                href={link.href}
-                onClick={() => setOpen(false)}
-                className={`block text-white font-medium px-2 py-1 rounded-md ${
-                  isActive ? "bg-blue-600" : "hover:bg-white/10"
-                }`}
-              >
-                {link.label}
-              </Link>
-            );
-          })}
-        </div>
-      )}
+      return (
+        <Link
+          key={link.href}
+          href={link.href}
+          onClick={() => setOpen(false)}
+          className={`block text-white font-medium px-2 py-1 rounded-md ${
+            isActive ? "bg-blue-600" : "hover:bg-white/10"
+          }`}
+        >
+          {link.label}
+        </Link>
+      );
+    })}
+  </div>
+)}
     </nav>
   );
 }
