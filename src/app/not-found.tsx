@@ -29,7 +29,7 @@ export default function NotFound() {
                 transition={{ repeat: Infinity, duration: 2 }}
                 className="mb-8"
             >
-                <span className="text-5xl">🪐</span>
+                <span className="text-5xl"></span>
             </motion.div>
 
             <motion.div
@@ -38,7 +38,7 @@ export default function NotFound() {
             >
                 <Link
                     href="/"
-                    className="px-6 py-3 bg-blue-600 rounded-md font-semibold hover:bg-blue-700 transition-colors dark:text-white"
+                    className="px-6 py-3 bg-black/70 rounded-md font-semibold hover:bg-black/90 transition-colors dark:text-white"
                 >
                     Go Home
                 </Link>
