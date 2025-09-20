@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import {key} from './constants/key'
+import { key } from '@/components/constants/key'
 export default function Hero() {
   const [books, setBooks] = useState([]);
 

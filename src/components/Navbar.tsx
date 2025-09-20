@@ -16,6 +16,13 @@ export default function Navbar() {
     { href: "/contact", label: "Contact" },
   ];
 
+  const checkActive = (href: string) => {
+    if (href === "/") {
+      return pathname === "/"; 
+    }
+    return pathname.startsWith(href); 
+  };
+
   return (
     <nav className="fixed top-0 left-0 w-full bg-black/80 backdrop-blur-md z-50 shadow-md mb-10">
       <div className="max-w-6xl mx-auto px-4 flex justify-between items-center h-16">
@@ -25,8 +32,7 @@ export default function Navbar() {
 
         <div className="hidden md:flex space-x-6 relative">
           {links.map((link) => {
-            const isActive =
-              pathname === link.href || pathname.startsWith(link.href);
+            const isActive = checkActive(link.href);
 
             return (
               <div key={link.href} className="relative">
@@ -56,30 +62,26 @@ export default function Navbar() {
         </button>
       </div>
 
-  {open && (
-  <div className="md:hidden bg-black/90 px-4 py-3 space-y-3">
-    {links.map((link) => {
-      // ✅ Home ke liye exact match, baaki ke liye startsWith
-      const isActive =
-        link.href === "/"
-          ? pathname === "/"
-          : pathname.startsWith(link.href);
+      {open && (
+        <div className="md:hidden bg-black/90 px-4 py-3 space-y-3">
+          {links.map((link) => {
+            const isActive = checkActive(link.href);
 
-      return (
-        <Link
-          key={link.href}
-          href={link.href}
-          onClick={() => setOpen(false)}
-          className={`block text-white font-medium px-2 py-1 rounded-md ${
-            isActive ? "bg-blue-600" : "hover:bg-white/10"
-          }`}
-        >
-          {link.label}
-        </Link>
-      );
-    })}
-  </div>
-)}
+            return (
+              <Link
+                key={link.href}
+                href={link.href}
+                onClick={() => setOpen(false)}
+                className={`block text-white font-medium px-2 py-1 rounded-md ${
+                  isActive ? "bg-blue-600" : "hover:bg-white/10"
+                }`}
+              >
+                {link.label}
+              </Link>
+            );
+          })}
+        </div>
+      )}
     </nav>
   );
 }
