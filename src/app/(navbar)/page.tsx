@@ -31,7 +31,7 @@ export default function HomePage() {
           `https://api.nytimes.com/svc/topstories/v2/${section}.json?api-key=${key}`
         );
         const data = await res.json();
-        setter(data.results?.slice(0, 6) || []);
+        setter(data.results?.slice(3, 9) || []);
       } catch (error) {
         console.error(`Error fetching ${section}:`, error);
       }
@@ -60,7 +60,7 @@ export default function HomePage() {
   );
 
   return (
-    <div className="px-6 py-10 space-y-16 max-w-6xl mx-auto">
+    <div className="px-6 py-10 space-y-16 max-w-6xl mx-auto mt-15">
       {/* Books Section */}
       <Section
         title="Books"
@@ -74,7 +74,7 @@ export default function HomePage() {
             <img
               src={book.book_image}
               alt={book.title}
-              className="h-40 w-full object-cover rounded-md mb-4"
+              className="h-40 w-full object-contain bg-white rounded-md mb-4"
             />
             <h3 className="font-semibold">{book.title}</h3>
             <p className="text-sm text-gray-500">{book.author}</p>

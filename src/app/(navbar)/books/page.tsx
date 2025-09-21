@@ -90,7 +90,7 @@ export default function BooksPage() {
                     <img
                       src={book.book_image}
                       alt={book.title}
-                      className="h-40 w-full object-cover rounded-md mb-4"
+                      className="h-50 w-full object-cove rounded-md mb-4 object-contain bg-white"
                     />
                     <h3 className="text-lg font-semibold">{book.title}</h3>
                     <p className="text-sm text-gray-400">{book.author}</p>
@@ -109,7 +109,7 @@ export default function BooksPage() {
       </div>
 
       {selectedBook && (
-        <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-50">
+        <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-50 max-md:px-2">
           <div className="bg-white rounded-xl p-6 max-w-lg w-full relative shadow-xl  overflow-y-auto">
             <button
               onClick={() => setSelectedBook(null)}
