@@ -34,8 +34,7 @@ export default function ArtDetailPage() {
   const hasNext = currentIndex < articles.length - 1;
 
   return (
-    <div className="max-w-4xl mx-auto px-6 py-12">
-      {/* Back Button */}
+    <div className="max-w-4xl mx-auto px-6 py-12 mt-15">
       <button
         onClick={() => router.push("/arts")}
         className="mb-6 px-4 py-2 bg-gray-200 rounded-md hover:bg-gray-300"
@@ -43,7 +42,6 @@ export default function ArtDetailPage() {
         ← Back to Arts
       </button>
 
-      {/* Image */}
       {article.multimedia?.[0]?.url && (
         <img
           src={article.multimedia[0].url}
@@ -52,17 +50,14 @@ export default function ArtDetailPage() {
         />
       )}
 
-      {/* Title + Byline */}
       <h1 className="text-3xl font-bold mb-2">{article.title}</h1>
       <p className="text-gray-500 mb-2">{article.byline}</p>
       <p className="text-sm text-gray-400 mb-6">
         Published: {new Date(article.published_date).toLocaleString()}
       </p>
 
-      {/* Abstract */}
       <p className="text-gray-700 leading-relaxed mb-6">{article.abstract}</p>
 
-      {/* Extra Metadata */}
       <div className="space-y-2 text-sm text-gray-600">
         <p><span className="font-semibold">Section:</span> {article.section}</p>
         {article.subsection && (
@@ -77,7 +72,6 @@ export default function ArtDetailPage() {
         <p><span className="font-semibold">Created:</span> {new Date(article.created_date).toLocaleString()}</p>
       </div>
 
-      {/* Facets */}
       <div className="mt-6">
         {article.des_facet?.length > 0 && (
           <p><span className="font-semibold">Tags:</span> {article.des_facet.join(", ")}</p>
@@ -109,7 +103,6 @@ export default function ArtDetailPage() {
         </div>
       )} */}
 
-      {/* Link to Original */}
       {article.url && (
         <a
           href={article.url}
@@ -120,7 +113,6 @@ export default function ArtDetailPage() {
         </a>
       )}
 
-      {/* Navigation Buttons */}
       <div className="flex justify-between mt-10">
         {hasPrev ? (
           <button
