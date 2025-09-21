@@ -39,14 +39,14 @@ export default function ArtDetailPage() {
         onClick={() => router.push("/arts")}
         className="mb-6 px-4 py-2 bg-gray-200 rounded-md hover:bg-gray-300"
       >
-        ← Back to Arts
+        ← 
       </button>
 
       {article.multimedia?.[0]?.url && (
         <img
           src={article.multimedia[0].url}
           alt={article.title}
-          className="w-full h-80 object-cover rounded-md mb-6"
+          className="w-full h-80 object-contain rounded-md mb-6"
         />
       )}
 
@@ -107,7 +107,7 @@ export default function ArtDetailPage() {
         <a
           href={article.url}
           target="_blank"
-          className="inline-block mt-8 px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700"
+          className="inline-block mt-8 px-4 py-2 border bg-black/20 rounded-md hover:bg-black/30"
         >
           Read Full Article →
         </a>

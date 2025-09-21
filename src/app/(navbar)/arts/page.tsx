@@ -29,7 +29,7 @@ export default function ArtsPage() {
         {articles.map((article, i) => (
           <Link
             key={i}
-            href={`/arts/${encodeURIComponent(i)}`} // ✅ dynamic route
+            href={`/arts/${(i)}`}
           >
             <div className="cursor-pointer rounded-xl border bg-black/10 p-4 hover:scale-[1.02] transition">
               {article.multimedia?.[0]?.url && (
