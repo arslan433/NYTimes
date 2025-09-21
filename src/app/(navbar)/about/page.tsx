@@ -20,10 +20,10 @@ export default function About() {
         transition={{ delay: 0.3, duration: 0.8 }}
         className="text-lg  text-center max-w-3xl leading-relaxed mb-10"
       >
-        This website is a <span className=" font-semibold">NYT Books</span> project
+        This website is a <span className=" font-semibold">NYTimes</span> project
         that I created to showcase my skills in modern web development.
         It fetches and displays data from the{" "}
-        <span className="font-semibold">New York Times Books API</span>,
+        <span className="font-semibold">New York Times API</span>,
         styled with <span className=" font-semibold">TailwindCSS</span>,
         animated using <span className=" font-semibold">Framer Motion</span>,
         and built on top of <span className=" font-semibold">Next.js App Router</span>.

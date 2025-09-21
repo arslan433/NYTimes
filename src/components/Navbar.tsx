@@ -27,7 +27,7 @@ export default function Navbar() {
     <nav className="fixed top-0 left-0 w-full bg-black/80 backdrop-blur-md z-50 shadow-md mb-10">
       <div className="max-w-6xl mx-auto px-4 flex justify-between items-center h-16">
         <Link href="/" className="text-xl font-bold text-white">
-          NYT<span className="text-blue-500"> Books</span>
+          N Y Times<span className="text-blue-500"> </span>
         </Link>
 
         <div className="hidden md:flex space-x-6 relative">

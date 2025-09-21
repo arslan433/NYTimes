@@ -12,35 +12,20 @@ export default function HomePage() {
   const [world, setWorld] = useState<any[]>([]);
 
   useEffect(() => {
-    async function fetchBooks() {
-      try {
-        const res = await fetch(
-          `https://api.nytimes.com/svc/books/v3/lists/overview.json?api-key=${key}`
-        );
-        const data = await res.json();
-        const allBooks = data.results?.lists?.flatMap((list: any) => list.books) || [];
-        setBooks(allBooks.slice(0, 6));
-      } catch (error) {
-        console.error("Error fetching books:", error);
-      }
-    }
-
     async function fetchTopStories(section: string, setter: any) {
       try {
         const res = await fetch(
           `https://api.nytimes.com/svc/topstories/v2/${section}.json?api-key=${key}`
         );
         const data = await res.json();
-        setter(data.results?.slice(3, 9) || []);
+        setter(data.results?.slice(0, 8) || []);
       } catch (error) {
         console.error(`Error fetching ${section}:`, error);
       }
     }
 
-    fetchBooks();
     fetchTopStories("arts", setArts);
     fetchTopStories("home", setHome);
-    fetchTopStories("science", setScience);
     fetchTopStories("us", setUs);
     fetchTopStories("world", setWorld);
   }, []);
@@ -60,27 +45,7 @@ export default function HomePage() {
   );
 
   return (
-    <div className="px-6 py-10 space-y-16 max-w-6xl mx-auto mt-15">
-      {/* Books Section */}
-      <Section
-        title="Books"
-        items={books}
-        link="/books"
-        renderItem={(book: any) => (
-          <div
-            key={book.primary_isbn13}
-            className="rounded-xl border bg-black/10 p-4"
-          >
-            <img
-              src={book.book_image}
-              alt={book.title}
-              className="h-40 w-full object-contain bg-white rounded-md mb-4"
-            />
-            <h3 className="font-semibold">{book.title}</h3>
-            <p className="text-sm text-gray-500">{book.author}</p>
-          </div>
-        )}
-      />
+    <div className="px-6 py-10 space-y-16 max-w-6xl mx-auto">
 
       {/* Arts Section */}
       <Section
@@ -89,15 +54,21 @@ export default function HomePage() {
         link="/arts"
         renderItem={(article: any, i: number) => (
           <div key={i} className="rounded-xl border bg-black/10 p-4">
-            {article.multimedia?.[0]?.url && (
-              <img
-                src={article.multimedia[0].url}
-                alt={article.title}
-                className="h-40 w-full object-cover rounded-md mb-4"
-              />
-            )}
-            <h3 className="font-semibold mb-2">{article.title}</h3>
-            <p className="text-sm text-gray-500">{article.byline}</p>
+            <Link
+              key={i}
+              href={`/arts/${(i)}`}
+            >
+
+              {article.multimedia?.[0]?.url && (
+                <img
+                  src={article.multimedia[0].url}
+                  alt={article.title}
+                  className="h-40 w-full object-cover rounded-md mb-4"
+                />
+              )}
+              <h3 className="font-semibold mb-2">{article.title}</h3>
+              <p className="text-sm text-gray-500">{article.byline}</p>
+            </Link>
           </div>
         )}
       />
@@ -108,42 +79,28 @@ export default function HomePage() {
         items={home}
         link="/topstories"
         renderItem={(article: any, i: number) => (
-          <div key={i} className="rounded-xl border bg-black/10 p-4">
-            {article.multimedia?.[0]?.url && (
-              <img
-                src={article.multimedia[0].url}
-                alt={article.title}
-                className="h-40 w-full object-cover rounded-md mb-4"
-              />
-            )}
-            <h3 className="font-semibold mb-2">{article.title}</h3>
-            <p className="text-sm text-gray-500">{article.byline}</p>
-          </div>
+          <Link
+            key={i}
+            href={`/topstories/${(i)}`}
+          >
+            <div key={i} className="rounded-xl border bg-black/10 p-4">
+              {article.multimedia?.[0]?.url && (
+                <img
+                  src={article.multimedia[0].url}
+                  alt={article.title}
+                  className="h-40 w-full object-cover rounded-md mb-4"
+                />
+              )}
+              <h3 className="font-semibold mb-2">{article.title}</h3>
+              <p className="text-sm text-gray-500">{article.byline}</p>
+            </div>
+          </Link>
         )}
       />
 
-      {/* Science Section */}
-      <Section
-        title="Science"
-        items={science}
-        link="/science"
-        renderItem={(article: any, i: number) => (
-          <div key={i} className="rounded-xl border bg-black/10 p-4">
-            {article.multimedia?.[0]?.url && (
-              <img
-                src={article.multimedia[0].url}
-                alt={article.title}
-                className="h-40 w-full object-cover rounded-md mb-4"
-              />
-            )}
-            <h3 className="font-semibold mb-2">{article.title}</h3>
-            <p className="text-sm text-gray-500">{article.byline}</p>
-          </div>
-        )}
-      />
 
       {/* US Section */}
-      <Section
+      {/* <Section
         title="US"
         items={us}
         link="/us"
@@ -160,10 +117,10 @@ export default function HomePage() {
             <p className="text-sm text-gray-500">{article.byline}</p>
           </div>
         )}
-      />
+      /> */}
 
       {/* World Section */}
-      <Section
+      {/* <Section
         title="World"
         items={world}
         link="/world"
@@ -180,7 +137,7 @@ export default function HomePage() {
             <p className="text-sm text-gray-500">{article.byline}</p>
           </div>
         )}
-      />
+      /> */}
     </div>
   );
 }

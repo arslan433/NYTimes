@@ -4,12 +4,12 @@ import { motion } from "framer-motion";
 
 export default function Contact() {
   return (
-    <div className="flex flex-col items-center justify-center px-6 py-6 pt-20">
+    <div className="flex flex-col items-center justify-center px-6 py-6">
       <motion.h1
         initial={{ y: -50, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ type: "spring", stiffness: 120, damping: 15 }}
-        className="text-5xl font-extrabold mb-6 text-blue-400"
+        className="text-5xl font-extrabold mb-6 text-black"
       >
         Get in Touch 
       </motion.h1>
@@ -47,9 +47,9 @@ export default function Contact() {
         ></textarea>
 
         <motion.button
-          whileHover={{ scale: 1.05, backgroundColor: "#2563eb" }}
+          whileHover={{ scale: 1.05, backgroundColor: "#fff" }}
           whileTap={{ scale: 0.95 }}
-          className="w-full py-3 bg-blue-600 rounded-md font-semibold text-white shadow-md transition-colors"
+          className="w-full py-3 bg-black/20 rounded-md font-semibold shadow-md transition-colors"
         >
           Send Message
         </motion.button>

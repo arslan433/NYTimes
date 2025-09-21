@@ -9,7 +9,7 @@ export default function WithNavbarLayout({ children }: { children: React.ReactNo
     return (
         <>
             <Navbar />
-            <main>{children}</main>
+            <main className="mt-15">{children}</main>
             {/* <Footer/> */}
         </>
     );
